@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks"
 
 
 const Controls: React.FC = () => {
-  return ()
+  return <div></div>
 }
 
 export default Controls
