@@ -15,7 +15,7 @@ const tileBackground = {
 const Tile: React.FC<TileProps> = ({ type, onClick }) => {
   return (
     <div
-      className={`h-10 w-100 ${tileBackground[type]} border border-gray-200 cursor-pointer`} onClick={onClick}>
+      className={`h-10 w-100 ${tileBackground[type]} border border-gray-400 cursor-pointer`} onClick={onClick}>
     </div>
   );
 };

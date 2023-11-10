@@ -1,17 +1,13 @@
-import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit"
-import { terrainSlice } from "../features/terrain/terrainSlice"
-import {
-  useSelector as rawUseSelector,
-  TypedUseSelectorHook,
-} from "react-redux"
+import { configureStore } from "@reduxjs/toolkit"
+import terrainReducer from "../features/terrain/terrainSlice"
 
 export const store = configureStore({
   reducer: {
-    grid: terrainSlice.reducer,
+    terrain: terrainReducer,
   },
 })
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
 
-export const useSelector: TypedUseSelectorHook<RootState> = rawUseSelector
+export default store
