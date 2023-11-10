@@ -1,4 +1,5 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit"
+import { terrainSlice } from "../features/terrain/terrainSlice"
 import {
   useSelector as rawUseSelector,
   TypedUseSelectorHook,
@@ -6,7 +7,7 @@ import {
 
 export const store = configureStore({
   reducer: {
-
+    grid: terrainSlice.reducer,
   },
 })
 
