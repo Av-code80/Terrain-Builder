@@ -6,7 +6,7 @@ type TileProps = {
 }
 
 const tileBackground = {
-  grass: 'bg-green-200',
+  grass: 'bg-green-600',
   water: 'bg-blue-300',
   rock: 'bg-gray-400',
   house: 'bg-yellow-500',
