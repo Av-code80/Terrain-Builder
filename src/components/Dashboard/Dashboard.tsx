@@ -1,22 +1,17 @@
 import React from "react"
 import { useDispatch, useSelector } from "react-redux"
 import {
-  selectCredit,
   selectActionHistory,
   selectCurrentHistoryIndex,
-  selectGrid,
 } from "../../app/selector"
 import {
   pushToHistory,
   redoAction,
   undoAction,
 } from "../../features/terrain/terrainSlice"
-import CurrentTileInfo from "../CurrentTileInfo/CurrentTileInfo"
 
 const Dashboard: React.FC = () => {
   const dispatch = useDispatch()
-  const grid = useSelector(selectGrid)
-  const credit = useSelector(selectCredit)
   const currentHistoryIndex = useSelector(selectCurrentHistoryIndex)
   const actionHistory = useSelector(selectActionHistory)
 
@@ -40,10 +35,7 @@ const Dashboard: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col items-center p-4">
-      <div className="mb-4">
-        <span className="text-lg font-semibold">Credit: {credit}</span>
-      </div>
+    <div className="flex flex-col-reverse items-center ">
       <div className="flex space-x-2 mb-4">
         <button
           onClick={handleUndoClick}

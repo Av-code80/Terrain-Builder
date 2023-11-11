@@ -5,7 +5,11 @@ type LayoutProps = {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  return <main>{children}</main>
+  return (
+    <html lang="en">
+      <main>{children}</main>
+    </html>
+  )
 }
 
 export default Layout

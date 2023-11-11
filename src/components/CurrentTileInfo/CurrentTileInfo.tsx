@@ -9,7 +9,7 @@ const CurrentTileInfo: React.FC = () => {
   )
 
   if (!selectedTile) {
-    return <div>No tile selected</div>
+    return <div>Please select a tile...</div>
   }
 
   const { index, type, action, creditChange } = selectedTile

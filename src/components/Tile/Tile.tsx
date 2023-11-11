@@ -1,24 +1,20 @@
 import React from "react"
+import { TileType, TileColorClasses } from "../../types/enum"
 
 type TileProps = {
-  type: "grass" | "water" | "rock" | "house"
+  type: TileType
   onClick: () => void
 }
 
-const tileBackground = {
-  grass: 'bg-green-600',
-  water: 'bg-blue-300',
-  rock: 'bg-gray-400',
-  house: 'bg-yellow-500',
-};
-
 const Tile: React.FC<TileProps> = ({ type, onClick }) => {
+  const tileBackground = TileColorClasses[type]
+
   return (
     <div
-      className={`h-10 w-100 ${tileBackground[type]} border border-gray-400 cursor-pointer`} onClick={onClick}>
-    </div>
-  );
-};
-
+      className={`h-10 ${tileBackground} border border-gray-400 cursor-pointer`}
+      onClick={onClick}
+    ></div>
+  )
+}
 
 export default Tile

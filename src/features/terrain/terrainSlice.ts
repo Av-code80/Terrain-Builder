@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 interface TerrainState {
-  grid: ("grass" | "water" | "rock" | "house")[]
+  grid: ("Grass" | "Water" | "Rock" | "House")[]
   credit: number
-  selectedItem: "water" | "rock" | "house" | null
+  selectedItem: "Water" | "Rock" | "House" | null
   actionHistory: Array<{
-    grid: ("grass" | "water" | "rock" | "house")[]
+    grid: ("Grass" | "Water" | "Rock" | "House")[]
     credit: number
     description: string
   }>
@@ -13,15 +13,15 @@ interface TerrainState {
 
   selectedTile: {
     index: number
-    type: "grass" | "water" | "rock" | "house"
+    type: "Grass" | "Water" | "Rock" | "House"
     action: string
     creditChange: number
   } | null
 }
 
 const initialState: TerrainState = {
-  grid: new Array(100).fill("grass"),
-  credit: 1000,
+  grid: new Array(100).fill("Grass"),
+  credit: 100,
   selectedItem: null,
   actionHistory: [],
   currentHistoryIndex: -1,
@@ -31,7 +31,7 @@ const initialState: TerrainState = {
 export const setGridAndCreditFromHistory = createAsyncThunk(
   "terrain/setGridAndCreditFromHistory",
   async (historyEntry: {
-    grid: ("grass" | "water" | "rock" | "house")[]
+    grid: ("Grass" | "Water" | "Rock" | "House")[]
     credit: number
     description: string
   }) => {
@@ -45,7 +45,7 @@ export const terrainSlice = createSlice({
   reducers: {
     setSelectedItem: (
       state: { selectedItem: string | null },
-      action: PayloadAction<"water" | "rock" | "house" | null>,
+      action: PayloadAction<"Water" | "Rock" | "House" | null>,
     ) => {
       state.selectedItem = action.payload
     },
@@ -53,13 +53,13 @@ export const terrainSlice = createSlice({
       state,
       action: PayloadAction<{
         index: number
-        item: "water" | "rock" | "house"
+        item: "Grass" | "Water" | "Rock" | "House"
       }>,
     ) => {
       const { index, item } = action.payload
 
-      if (state.grid[index] === "grass") {
-        const cost = item === "house" ? 10 : 3
+      if (state.grid[index] === "Grass") {
+        const cost = item === "House" ? 10 : 3
         if (state.credit >= cost) {
           state.grid[index] = item
           state.credit -= cost
@@ -70,12 +70,12 @@ export const terrainSlice = createSlice({
     removeItem: (state, action: PayloadAction<number>) => {
       const index = action.payload
       const item = state.grid[index]
-      if (item === "house") {
+      if (item === "House") {
         state.credit += 5
-      } else if (item === "rock") {
+      } else if (item === "Rock") {
         state.credit += 3
       }
-      state.grid[index] = "grass"
+      state.grid[index] = "Grass"
     },
 
     pushToHistory: (state, action: PayloadAction<string>) => {
@@ -114,7 +114,7 @@ export const terrainSlice = createSlice({
     setGridAndCreditFromHistory: (
       state,
       action: PayloadAction<{
-        grid: ("grass" | "water" | "rock" | "house")[]
+        grid: ("Grass" | "Water" | "Rock" | "House")[]
         credit: number
         description: string
       }>,
@@ -128,7 +128,7 @@ export const terrainSlice = createSlice({
       state,
       action: PayloadAction<{
         index: number
-        type: "grass" | "water" | "rock" | "house"
+        type: "Grass" | "Water" | "Rock" | "House"
         action: string
         creditChange: number
       }>,

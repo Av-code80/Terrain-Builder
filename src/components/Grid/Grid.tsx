@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { v4 as uuidv4 } from "uuid"
 import Tile from "../Tile/Tile"
 import { selectGrid, selectSelectedItem } from "../../app/selector"
+import { TileType } from "../../types/enum" // Import the TileType enum
 import {
   placeItem,
   pushToHistory,
@@ -21,16 +22,16 @@ const Grid: React.FC = () => {
     let creditChange = 0
     let description = ""
 
-    if (tileType === "grass" && selectedItem) {
+    if (tileType === "Grass" && selectedItem) {
       actionType = "Place"
-      creditChange = selectedItem === "house" ? -10 : -3 // Example costs
+      creditChange = selectedItem === "House" ? -10 : -3 // Example costs
       description = `Placed ${selectedItem} at position (${Math.floor(
         index / 10,
       )}, ${index % 10})`
       dispatch(placeItem({ index, item: selectedItem }))
-    } else if (tileType !== "grass") {
+    } else if (tileType !== "Grass") {
       actionType = "Remove"
-      creditChange = tileType === "house" ? 5 : tileType === "rock" ? 3 : 0
+      creditChange = tileType === "House" ? 5 : tileType === "Rock" ? 3 : 0
       description = `Removed ${tileType} at position (${Math.floor(
         index / 10,
       )}, ${index % 10})`
@@ -59,12 +60,27 @@ const Grid: React.FC = () => {
     index,
   }))
 
+   const stringToTileType = (type: string): TileType => {
+     switch (type) {
+       case "Grass":
+         return TileType.Grass
+       case "Water":
+         return TileType.Water
+       case "Rock":
+         return TileType.Rock
+       case "House":
+         return TileType.House
+       default:
+         return TileType.Grass 
+     }
+   }
+
   return (
-    <div className="grid grid-cols-10 gap-1 w-full">
+    <div className="grid grid-cols-10 w-full">
       {gridWithId.map((tile) => (
         <Tile
           key={tile.id}
-          type={tile.type}
+          type={stringToTileType(tile.type)}
           onClick={() => handleTileClick(tile.index)}
         />
       ))}
