@@ -6,15 +6,19 @@ import {
   selectCurrentHistoryIndex,
   selectGrid,
 } from "../../app/selector"
-import { pushToHistory, redoAction, undoAction } from "../../features/terrain/terrainSlice"
+import {
+  pushToHistory,
+  redoAction,
+  undoAction,
+} from "../../features/terrain/terrainSlice"
+import CurrentTileInfo from "../CurrentTileInfo/CurrentTileInfo"
 
 const Dashboard: React.FC = () => {
-    const dispatch = useDispatch()
+  const dispatch = useDispatch()
   const grid = useSelector(selectGrid)
   const credit = useSelector(selectCredit)
   const currentHistoryIndex = useSelector(selectCurrentHistoryIndex)
   const actionHistory = useSelector(selectActionHistory)
-
 
   const handleUndoClick = () => {
     dispatch(undoAction())
@@ -24,16 +28,16 @@ const Dashboard: React.FC = () => {
     dispatch(redoAction())
   }
 
- const handleHistoryClick = (index: number) => {
-   if (index !== currentHistoryIndex) {
-     const historyEntry = actionHistory[index]
-     dispatch(pushToHistory(`Jumped to Action ${index + 1}`))
-     dispatch({
-       type: "terrain/setGridAndCreditFromHistory",
-       payload: historyEntry,
-     })
-   }
- }
+  const handleHistoryClick = (index: number) => {
+    if (index !== currentHistoryIndex) {
+      const historyEntry = actionHistory[index]
+      dispatch(pushToHistory(`Jumped to Action ${index + 1}`))
+      dispatch({
+        type: "terrain/setGridAndCreditFromHistory",
+        payload: historyEntry,
+      })
+    }
+  }
 
   return (
     <div className="flex flex-col items-center p-4">

@@ -8,3 +8,4 @@ export const selectSelectedItem = (state: RootState) =>
   export const selectCurrentHistoryIndex = (state: RootState) => state.terrain.currentHistoryIndex
   export const selectActionHistory = (state: RootState) => state.terrain.actionHistory
 
+export const selectSelectedTile = (state: RootState) => state.terrain.selectedTile

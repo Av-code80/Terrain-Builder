@@ -10,6 +10,13 @@ interface TerrainState {
     description: string
   }>
   currentHistoryIndex: number
+
+  selectedTile: {
+    index: number
+    type: "grass" | "water" | "rock" | "house"
+    action: string
+    creditChange: number
+  } | null
 }
 
 const initialState: TerrainState = {
@@ -18,6 +25,7 @@ const initialState: TerrainState = {
   selectedItem: null,
   actionHistory: [],
   currentHistoryIndex: -1,
+  selectedTile: null,
 }
 
 export const setGridAndCreditFromHistory = createAsyncThunk(
@@ -115,11 +123,24 @@ export const terrainSlice = createSlice({
       state.grid = grid
       state.credit = credit
     },
+
+    setSelectedTile: (
+      state,
+      action: PayloadAction<{
+        index: number
+        type: "grass" | "water" | "rock" | "house"
+        action: string
+        creditChange: number
+      }>,
+    ) => {
+      state.selectedTile = action.payload
+    },
   },
 })
 
 export const {
   setSelectedItem,
+  setSelectedTile,
   placeItem,
   removeItem,
   pushToHistory,
