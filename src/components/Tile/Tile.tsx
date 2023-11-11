@@ -11,8 +11,8 @@ const Tile: React.FC<TileProps> = ({ type, onClick }) => {
 
   return (
     <div
-      className={`h-10 ${tileBackground} border border-gray-400 cursor-pointer`}
       onClick={onClick}
+      className={`h-16 w-16 border-2 border-gray-300 cursor-pointer ${tileBackground} hover:bg-opacity-75 transition ease-in-out duration-150`}
     ></div>
   )
 }

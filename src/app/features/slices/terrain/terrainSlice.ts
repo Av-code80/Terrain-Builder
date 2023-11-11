@@ -88,7 +88,7 @@ export const terrainSlice = createSlice({
       const historyEntry = {
         grid: [...state.grid],
         credit: state.credit,
-        description: action.payload, // Add a descriptive string of the action
+        description: action.payload, 
       }
       state.actionHistory.push(historyEntry)
       state.currentHistoryIndex++

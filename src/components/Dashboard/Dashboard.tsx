@@ -1,19 +1,13 @@
 import React from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import {
-  selectActionHistory,
-  selectCurrentHistoryIndex,
-} from "../../app/features/selector"
-import {
-  pushToHistory,
   redoAction,
   undoAction,
 } from "../../app/features/slices/terrain/terrainSlice"
+import History from "../History/History"
 
 const Dashboard: React.FC = () => {
   const dispatch = useDispatch()
-  const currentHistoryIndex = useSelector(selectCurrentHistoryIndex)
-  const actionHistory = useSelector(selectActionHistory)
 
   const handleUndoClick = () => {
     dispatch(undoAction())
@@ -22,50 +16,17 @@ const Dashboard: React.FC = () => {
   const handleRedoClick = () => {
     dispatch(redoAction())
   }
-
-  const handleHistoryClick = (index: number) => {
-    if (index !== currentHistoryIndex) {
-      const historyEntry = actionHistory[index]
-      dispatch(pushToHistory(`Jumped to Action ${index + 1}`))
-      dispatch({
-        type: "terrain/setGridAndCreditFromHistory",
-        payload: historyEntry,
-      })
-    }
-  }
-
   return (
-    <div className="flex flex-col-reverse items-center ">
-      <div className="flex space-x-2 mb-4">
-        <button
-          onClick={handleUndoClick}
-          className="bg-red-500 text-white py-2 px-4 rounded shadow"
-        >
-          Previous
+    <div className="max-h-screen overflow-auto">
+      <div className="flex justify-between mb-4">
+        <button onClick={handleUndoClick} className="btn red">
+          Undo
         </button>
-        <button
-          onClick={handleRedoClick}
-          className="bg-green-500 text-white py-2 px-4 rounded shadow"
-        >
-          Next
+        <button onClick={handleRedoClick} className="btn green">
+          Redo
         </button>
       </div>
-      <div className="w-full max-h-64 overflow-auto">
-        <ul>
-          <p className="text-slate-600 pl-16 text-2xl font-bold">History</p>
-          {actionHistory.map((entry, index) => (
-            <li
-              key={index}
-              className={`text-sm p-2 cursor-pointer ${
-                index === currentHistoryIndex ? "bg-blue-100" : ""
-              }`}
-              onClick={() => handleHistoryClick(index)}
-            >
-              Action {index + 1}: {entry.description}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <History />
     </div>
   )
 }

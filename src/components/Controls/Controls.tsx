@@ -12,30 +12,17 @@ const Controls: React.FC = () => {
   }
 
   return (
-    <div className="flex justify-center mb-2">
-      <div className="flex justify-around w-1/3 items-center">
-        <div className="">
-          <span className="text-lg font-semibold">Credit: {credit}</span>
-        </div>
-        <button
-          className="bg-blue-500 text-white py-2 px-4  rounded shadow"
-          onClick={() => handleSelectItem("Water")}
-        >
-          Water
-        </button>
-        <button
-          className="bg-gray-500 text-white py-2 px-4   rounded shadow"
-          onClick={() => handleSelectItem("Rock")}
-        >
-          Rock
-        </button>
-        <button
-          className="bg-yellow-500 text-white py-2 px-4 rounded shadow"
-          onClick={() => handleSelectItem("House")}
-        >
-          House
-        </button>
-      </div>
+    <div className="flex justify-around items-center p-4 bg-white rounded shadow space-x-2">
+      <span className="text-lg font-semibold">Credits: {credit}</span>
+      <button className="btn blue" onClick={() => handleSelectItem("Water")}>
+        Water
+      </button>
+      <button className="btn gray" onClick={() => handleSelectItem("Rock")}>
+        Rock
+      </button>
+      <button className="btn yellow" onClick={() => handleSelectItem("House")}>
+        House
+      </button>
     </div>
   )
 }

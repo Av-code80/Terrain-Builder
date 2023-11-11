@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { v4 as uuidv4 } from "uuid"
 import Tile from "../Tile/Tile"
 import { selectGrid, selectSelectedItem } from "../../app/features/selector"
-import { TileType } from "../../interfaces/enum" // Import the TileType enum
+import { TileType } from "../../interfaces/enum" 
 import {
   placeItem,
   pushToHistory,
@@ -24,7 +24,7 @@ const Grid: React.FC = () => {
 
     if (tileType === "Grass" && selectedItem) {
       actionType = "Place"
-      creditChange = selectedItem === "House" ? -10 : -3 // Example costs
+      creditChange = selectedItem === "House" ? -10 : -3 
       description = `Placed ${selectedItem} at position (${Math.floor(
         index / 10,
       )}, ${index % 10})`
@@ -76,14 +76,16 @@ const Grid: React.FC = () => {
   }
 
   return (
-    <div className="grid grid-cols-10 w-full">
-      {gridWithId.map((tile) => (
-        <Tile
-          key={tile.id}
-          type={stringToTileType(tile.type)}
-          onClick={() => handleTileClick(tile.index)}
-        />
-      ))}
+    <div className="max-w-max mx-auto mt-8">
+      <div className="grid grid-cols-10 gap-1 shadow-lg p-4 bg-green-100 rounded">
+        {gridWithId.map((tile) => (
+          <Tile
+            key={tile.id}
+            type={stringToTileType(tile.type)}
+            onClick={() => handleTileClick(tile.index)}
+          />
+        ))}
+      </div>
     </div>
   )
 }

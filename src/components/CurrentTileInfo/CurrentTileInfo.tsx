@@ -16,18 +16,14 @@ const CurrentTileInfo: React.FC = () => {
   const position = `(${Math.floor(index / 10)}, ${index % 10})`
   const tileColorClass = TileColorClasses[type as TileType]
 
-  return (
-    <div className="p-4">
-      <div>Current tile:</div>
-      <div className={`w-6 h-6 ${tileColorClass} inline-block mr-2`}></div>
-      <span>{type.charAt(0).toUpperCase() + type.slice(1)}</span>
+   return (
+    <div className="flex flex-col items-center p-4 bg-white rounded shadow my-4">
+      <div className={`w-8 h-8 ${tileColorClass} rounded-full mb-2`}></div>
+      <div>Type: {type}</div>
       <div>Position: {position}</div>
-      <div>
-        Action: {action} (
-        {creditChange >= 0 ? `+${creditChange}` : creditChange} credit)
-      </div>
+      <div>Action: {action} ({creditChange})</div>
     </div>
-  )
-}
+  );
+};
 
 export default CurrentTileInfo
