@@ -17,12 +17,12 @@ const Dashboard: React.FC = () => {
     dispatch(redoAction())
   }
   return (
-    <div className="max-h-screen overflow-auto">
+    <div className="max-h-screen mt-10 overflow-auto">
       <div className="flex justify-between mb-4">
-        <button onClick={handleUndoClick} className="btn red">
+        <button onClick={handleUndoClick} className="gradient-button-red">
           Undo
         </button>
-        <button onClick={handleRedoClick} className="btn green">
+        <button onClick={handleRedoClick} className="gradient-button-purple">
           Redo
         </button>
       </div>

@@ -23,16 +23,18 @@ const History: React.FC = () => {
   }
 
   return (
-    <div className="bg-white rounded shadow p-4 max-h-screen overflow-auto">
-      <h2 className="text-xl font-semibold mb-2">Action History</h2>
+    <div className="p-4 max-h-screen overflow-auto gradient-border gradient-shadow">
+      <h2 className="gradient-text text-xl font-semibold mb-4">
+        Action History
+      </h2>
       <ul className="space-y-2">
         {actionHistory.map((entry, index) => (
           <li
             key={index}
-            className={`p-2 cursor-pointer ${
+            className={`text-indigo-900 p-2 cursor-pointer ${
               index === currentHistoryIndex
-                ? "bg-blue-100"
-                : "hover:bg-gray-100"
+                ? "bg-green-100"
+                : "hover:bg-gray-200"
             }`}
             onClick={() => handleHistoryClick(index)}
           >

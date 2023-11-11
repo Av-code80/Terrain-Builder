@@ -12,15 +12,26 @@ const Controls: React.FC = () => {
   }
 
   return (
-    <div className="flex justify-around items-center p-4 bg-white rounded shadow space-x-2">
-      <span className="text-lg font-semibold">Credits: {credit}</span>
-      <button className="btn blue" onClick={() => handleSelectItem("Water")}>
+    <div className="flex justify-around items-center p-4 rounded shadow-lg">
+      <span className="gradient-shadow p-2 gradient-text text-lg">
+        Credits: {credit}
+      </span>
+      <button
+        className="gradient-btn water"
+        onClick={() => handleSelectItem("Water")}
+      >
         Water
       </button>
-      <button className="btn gray" onClick={() => handleSelectItem("Rock")}>
+      <button
+        className="gradient-btn rock"
+        onClick={() => handleSelectItem("Rock")}
+      >
         Rock
       </button>
-      <button className="btn yellow" onClick={() => handleSelectItem("House")}>
+      <button
+        className="gradient-btn house"
+        onClick={() => handleSelectItem("House")}
+      >
         House
       </button>
     </div>

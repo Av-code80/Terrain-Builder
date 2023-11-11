@@ -9,7 +9,7 @@ const CurrentTileInfo: React.FC = () => {
   )
 
   if (!selectedTile) {
-    return <div>Please select a tile...</div>
+    return <div className="text-indigo-900">Please select a tile...</div>
   }
 
   const { index, type, action, creditChange } = selectedTile
@@ -17,13 +17,16 @@ const CurrentTileInfo: React.FC = () => {
   const tileColorClass = TileColorClasses[type as TileType]
 
    return (
-    <div className="flex flex-col items-center p-4 bg-white rounded shadow my-4">
-      <div className={`w-8 h-8 ${tileColorClass} rounded-full mb-2`}></div>
-      <div>Type: {type}</div>
-      <div>Position: {position}</div>
-      <div>Action: {action} ({creditChange})</div>
-    </div>
-  );
+     <div className="bg-white gradient-shadow rounded gradient-shadow p-4 text-center gradient-border">
+       <h2 className="gradient-text text-lg font-bold mb-2">Selected Tile</h2>
+       <div className={`w-8 h-8 ${tileColorClass}  rounded-full mb-2`}></div>
+       <div className="text-indigo-900">Type: {type}</div>
+       <div className="text-indigo-900">Position: {position}</div>
+       <div className="text-indigo-900">
+         Action: {action} ({creditChange})
+       </div>
+     </div>
+   )
 };
 
 export default CurrentTileInfo
