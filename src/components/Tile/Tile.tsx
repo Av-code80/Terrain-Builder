@@ -1,5 +1,5 @@
 import React from "react"
-import { TileType, TileColorClasses } from "../../types/enum"
+import { TileType, TileColorClasses } from "../../interfaces/enum"
 
 type TileProps = {
   type: TileType

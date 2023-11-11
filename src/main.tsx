@@ -1,7 +1,7 @@
 import React from "react"
-import { createRoot } from "react-dom/client" 
+import { createRoot } from "react-dom/client"
 import "./index.css"
-import { store } from "./app/store"
+import { store } from "./app/features/store"
 import { Provider } from "react-redux"
 import App from "./App"
 

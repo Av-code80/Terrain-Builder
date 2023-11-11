@@ -2,14 +2,14 @@ import React from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { v4 as uuidv4 } from "uuid"
 import Tile from "../Tile/Tile"
-import { selectGrid, selectSelectedItem } from "../../app/selector"
-import { TileType } from "../../types/enum" // Import the TileType enum
+import { selectGrid, selectSelectedItem } from "../../app/features/selector"
+import { TileType } from "../../interfaces/enum" // Import the TileType enum
 import {
   placeItem,
   pushToHistory,
   removeItem,
   setSelectedTile,
-} from "../../features/terrain/terrainSlice"
+} from "../../app/features/slices/terrain/terrainSlice"
 
 const Grid: React.FC = () => {
   const dispatch = useDispatch()
@@ -60,20 +60,20 @@ const Grid: React.FC = () => {
     index,
   }))
 
-   const stringToTileType = (type: string): TileType => {
-     switch (type) {
-       case "Grass":
-         return TileType.Grass
-       case "Water":
-         return TileType.Water
-       case "Rock":
-         return TileType.Rock
-       case "House":
-         return TileType.House
-       default:
-         return TileType.Grass 
-     }
-   }
+  const stringToTileType = (type: string): TileType => {
+    switch (type) {
+      case "Grass":
+        return TileType.Grass
+      case "Water":
+        return TileType.Water
+      case "Rock":
+        return TileType.Rock
+      case "House":
+        return TileType.House
+      default:
+        return TileType.Grass
+    }
+  }
 
   return (
     <div className="grid grid-cols-10 w-full">

@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit"
-import terrainReducer from "../features/terrain/terrainSlice"
+import terrainReducer from "./slices/terrain/terrainSlice"
 
 export const store = configureStore({
   reducer: {

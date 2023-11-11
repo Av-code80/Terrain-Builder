@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from "react-redux"
 import {
   selectActionHistory,
   selectCurrentHistoryIndex,
-} from "../../app/selector"
+} from "../../app/features/selector"
 import {
   pushToHistory,
   redoAction,
   undoAction,
-} from "../../features/terrain/terrainSlice"
+} from "../../app/features/slices/terrain/terrainSlice"
 
 const Dashboard: React.FC = () => {
   const dispatch = useDispatch()

@@ -1,7 +1,7 @@
 import React from "react"
 import { useSelector } from "react-redux"
-import { RootState } from "../../app/store"
-import { TileColorClasses, TileType } from "../../types/enum"
+import { RootState } from "../../app/features/store"
+import { TileColorClasses, TileType } from "../../interfaces/enum"
 
 const CurrentTileInfo: React.FC = () => {
   const selectedTile = useSelector(
