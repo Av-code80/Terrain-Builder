@@ -1,20 +1,29 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { v4 as uuidv4 } from "uuid"
 import Tile from "../Tile/Tile"
-import { selectGrid, selectSelectedItem } from "../../app/features/selector"
-import { TileType } from "../../interfaces/enum" 
+import {
+  selectCredit,
+  selectGrid,
+  selectSelectedItem,
+} from "../../app/features/selector"
+import { TileType } from "../../interfaces/enum"
 import {
   placeItem,
   pushToHistory,
   removeItem,
   setSelectedTile,
+  initializeGrid,
 } from "../../app/features/slices/terrain/terrainSlice"
 
 const Grid: React.FC = () => {
   const dispatch = useDispatch()
   const grid = useSelector(selectGrid)
   const selectedItem = useSelector(selectSelectedItem)
+  const credit = useSelector(selectCredit)
+
+  useEffect(() => {
+    dispatch(initializeGrid())
+  }, [dispatch])
 
   const handleTileClick = (index: number) => {
     const tileType = grid[index]
@@ -24,17 +33,18 @@ const Grid: React.FC = () => {
 
     if (tileType === "Grass" && selectedItem) {
       actionType = "Place"
-      creditChange = selectedItem === "House" ? -10 : -3 
+      creditChange = selectedItem === "House" ? -10 : -3
       description = `Placed ${selectedItem} at position (${Math.floor(
         index / 10,
       )}, ${index % 10})`
       dispatch(placeItem({ index, item: selectedItem }))
-    } else if (tileType !== "Grass") {
+    } else if (tileType !== "Grass" && credit >= 1) {
       actionType = "Remove"
-      creditChange = tileType === "House" ? 5 : tileType === "Rock" ? 3 : 0
+      creditChange = tileType === "House" ? 5 : tileType === "Rock" ? -3 : 0
       description = `Removed ${tileType} at position (${Math.floor(
         index / 10,
       )}, ${index % 10})`
+
       dispatch(removeItem(index))
     }
 
@@ -54,12 +64,6 @@ const Grid: React.FC = () => {
     }
   }
 
-  const gridWithId = grid.map((tile, index) => ({
-    type: tile,
-    id: uuidv4(),
-    index,
-  }))
-
   const stringToTileType = (type: string): TileType => {
     switch (type) {
       case "Grass":
@@ -78,11 +82,11 @@ const Grid: React.FC = () => {
   return (
     <div className="max-w-max mx-auto mt-8">
       <div className="grid grid-cols-10 gap-1 shadow-lg p-4 bg-green-100 rounded">
-        {gridWithId.map((tile) => (
+        {grid.map((tileType, index) => (
           <Tile
-            key={tile.id}
-            type={stringToTileType(tile.type)}
-            onClick={() => handleTileClick(tile.index)}
+            key={index}
+            type={stringToTileType(tileType)}
+            onClick={() => handleTileClick(index)}
           />
         ))}
       </div>

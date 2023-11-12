@@ -19,7 +19,7 @@ const CurrentTileInfo: React.FC = () => {
    return (
      <div className="bg-white gradient-shadow rounded gradient-shadow p-4 text-center gradient-border">
        <h2 className="gradient-text text-lg font-bold mb-2">Selected Tile</h2>
-       <div className={`w-8 h-8 ${tileColorClass}  rounded-full mb-2`}></div>
+       <div className={` h-2 ${tileColorClass} mb-2 rounded-full`}></div>
        <div className="text-indigo-900">Type: {type}</div>
        <div className="text-indigo-900">Position: {position}</div>
        <div className="text-indigo-900">
