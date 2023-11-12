@@ -9,7 +9,11 @@ const CurrentTileInfo: React.FC = () => {
   )
 
   if (!selectedTile) {
-    return <div className="text-indigo-900">Please select a tile...</div>
+    return (
+      <div className="text-indigo-900 animate-fadeIn">
+        Please select a tile...
+      </div>
+    )
   }
 
   const { index, type, action, creditChange } = selectedTile

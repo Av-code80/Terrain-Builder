@@ -80,7 +80,7 @@ const Grid: React.FC = () => {
   }
 
   return (
-    <div className="max-w-max mx-auto mt-8">
+    <div className="max-w-max mx-auto mt-8 animate-fadeIn">
       <div className="grid grid-cols-10 gap-1 shadow-lg p-4 bg-green-100 rounded">
         {grid.map((tileType, index) => (
           <Tile

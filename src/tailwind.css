@@ -32,7 +32,7 @@
       background-image: linear-gradient(to right, #4a00e0, #8e2de2);
     }
   }
-  @layer components {
+ @layer components {
   .gradient-btn {
     @apply py-2 px-4 font-semibold rounded shadow transition duration-200 ease-in-out text-white;
   }

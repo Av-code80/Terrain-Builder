@@ -17,19 +17,19 @@ const Controls: React.FC = () => {
         Credits: {credit}
       </span>
       <button
-        className="gradient-btn water"
+        className="gradient-btn water text-white py-2 px-4 rounded transition duration-200"
         onClick={() => handleSelectItem("Water")}
       >
         Water
       </button>
       <button
-        className="gradient-btn rock"
+        className="gradient-btn rock text-white py-2 px-4 rounded transition duration-200"
         onClick={() => handleSelectItem("Rock")}
       >
         Rock
       </button>
       <button
-        className="gradient-btn house"
+        className="gradient-btn house text-white py-2 px-4 rounded transition duration-200"
         onClick={() => handleSelectItem("House")}
       >
         House
