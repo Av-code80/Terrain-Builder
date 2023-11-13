@@ -1,25 +1,7 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { TileType } from "../../../../interfaces/enum"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { toast } from "react-toastify"
-
-interface TerrainState {
-  grid: ("Grass" | "Water" | "Rock" | "House")[]
-  credit: number
-  selectedItem: "Water" | "Rock" | "House" | null
-  actionHistory: Array<{
-    grid: ("Grass" | "Water" | "Rock" | "House")[]
-    credit: number
-    description: string
-  }>
-  currentHistoryIndex: number
-  selectedTile: {
-    index: number
-    type: "Grass" | "Water" | "Rock" | "House"
-    action: string
-    creditChange: number
-  } | null
-  error: string | null
-}
+import { TerrainState, TerrainType } from "../type"
+import { TileType } from "../../../../interfaces/enum"
 
 const initialState: TerrainState = {
   grid: new Array(100).fill("Grass"),
@@ -31,17 +13,6 @@ const initialState: TerrainState = {
   error: null,
 }
 
-export const setGridAndCreditFromHistory = createAsyncThunk(
-  "terrain/setGridAndCreditFromHistory",
-  async (historyEntry: {
-    grid: ("Grass" | "Water" | "Rock" | "House")[]
-    credit: number
-    description: string
-  }) => {
-    return historyEntry
-  },
-)
-
 export const terrainSlice = createSlice({
   name: "terrain",
   initialState,
@@ -51,9 +22,10 @@ export const terrainSlice = createSlice({
         Math.random() < 0.1 ? TileType.Rock : TileType.Grass,
       )
     },
+
     setSelectedItem: (
       state: { selectedItem: string | null },
-      action: PayloadAction<"Water" | "Rock" | "House" | null>,
+      action: PayloadAction<TerrainType | null>,
     ) => {
       state.selectedItem = action.payload
     },
@@ -62,7 +34,7 @@ export const terrainSlice = createSlice({
       state,
       action: PayloadAction<{
         index: number
-        type: "Grass" | "Water" | "Rock" | "House"
+        type: TerrainType
         action: string
         creditChange: number
       }>,
@@ -74,7 +46,7 @@ export const terrainSlice = createSlice({
       state,
       action: PayloadAction<{
         index: number
-        item: "Grass" | "Water" | "Rock" | "House"
+        item: TerrainType
       }>,
     ) => {
       const { index, item } = action.payload
@@ -91,10 +63,7 @@ export const terrainSlice = createSlice({
       const index = action.payload
       const item = state.grid[index]
 
-      if (
-        item === "Water" ||
-        (state.grid[index] === "Water" && state.credit <= 3)
-      ) {
+      if (item === "Water" && state.credit <= 3) {
         toast.error('Cannot remove "Water" block & Not enough budget.')
         return
       }
@@ -128,18 +97,6 @@ export const terrainSlice = createSlice({
         state.currentHistoryIndex++
       }
     },
-    setGridAndCreditFromHistory: (
-      state,
-      action: PayloadAction<{
-        grid: ("Grass" | "Water" | "Rock" | "House")[]
-        credit: number
-        description: string
-      }>,
-    ) => {
-      const { grid, credit } = action.payload
-      state.grid = grid
-      state.credit = credit
-    },
 
     pushToHistory: (state, action: PayloadAction<string>) => {
       if (state.currentHistoryIndex !== state.actionHistory.length - 1) {
@@ -166,8 +123,8 @@ export const {
   placeItem,
   removeItem,
   pushToHistory,
-  undoAction,
   redoAction,
+  undoAction,
 } = terrainSlice.actions
 
 export default terrainSlice.reducer

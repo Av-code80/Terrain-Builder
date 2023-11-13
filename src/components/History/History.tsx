@@ -24,10 +24,10 @@ const History: React.FC = () => {
 
   return (
     <div className="p-4 max-h-screen overflow-auto gradient-border gradient-shadow">
-      <h2 className="gradient-text text-xl font-semibold mb-4 animate-fadeIn">
+      <h2 className="gradient-text lg:text-xl 2xs:text-center lg:text-left 2xs:text-2xl font-semibold mb-4 animate-fadeIn">
         Action History
       </h2>
-      <ul className="space-y-2 animate-slideIn">
+      <ul className="space-y-2 animate-slideIn lg:text-left 2xs:text-center">
         {actionHistory.map((entry, index) => (
           <li
             key={index}

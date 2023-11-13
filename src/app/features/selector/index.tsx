@@ -12,3 +12,5 @@ export const selectActionHistory = (state: RootState) =>
 
 export const selectSelectedTile = (state: RootState) =>
   state.terrain.selectedTile
+export const selectCreditChange = (state: RootState) =>
+  state.terrain.selectedTile?.creditChange
