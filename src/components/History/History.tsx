@@ -27,19 +27,25 @@ const History: React.FC = () => {
         Action History
       </h2>
       <ul className="space-y-2 animate-slideIn lg:text-left 2xs:text-center">
-        {actionHistory.map((entry, index) => (
-          <li
-            key={index}
-            className={`text-purple-900 p-2 cursor-pointer ${
-              index === currentHistoryIndex
-                ? "bg-green-100"
-                : "hover:bg-gray-200"
-            }`}
-            onClick={() => handleHistoryClick(index)}
-          >
-            Action {index + 1}: {entry.description}
-          </li>
-        ))}
+        {actionHistory.map((entry, index) => {
+          const key = `action-${index}-${entry.description.replace(
+            /\s+/g,
+            "-",
+          )}`
+          return (
+            <li
+              key={key}
+              className={`text-purple-900 p-2 cursor-pointer ${
+                index === currentHistoryIndex
+                  ? "bg-green-100"
+                  : "hover:bg-gray-200"
+              }`}
+              onClick={() => handleHistoryClick(index)}
+            >
+              Action {index + 1}: {entry.description}
+            </li>
+          )
+        })}
       </ul>
     </div>
   )

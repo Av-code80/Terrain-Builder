@@ -6,7 +6,7 @@ import {
   setSelectedTile,
 } from "../../features/slices/grid/gridSlice"
 import { selectCredit, selectSelectedItem } from "../../features/selector"
-import { TerrainType } from "../../common/types/interfaces" 
+import { TerrainType } from "../types/interfaces"
 import { useCallback } from "react"
 
 export const useTileClickHandler = (grid: TerrainType[]) => {
@@ -14,48 +14,50 @@ export const useTileClickHandler = (grid: TerrainType[]) => {
   const selectedItem = useSelector(selectSelectedItem)
   const credit = useSelector(selectCredit)
 
-   const handleTileClick = useCallback(
-     (index: number) => {
-       const tileType = grid[index]
-       let actionType = ""
-       let creditChange = 0
-       let description = ""
+  const handleTileClick = useCallback(
+    (index: number) => {
+      if (index < 0 || index >= grid.length) {
+       throw new Error(`Invalid tile index: ${index}`)
+      }
+      const tileType = grid[index]
+      let actionType = ""
+      let creditChange = 0
+      let description = ""
 
-       if (tileType === "Grass" && selectedItem) {
-         actionType = "Place"
-         creditChange = selectedItem === "House" ? -10 : -3
-         description = `Placed ${selectedItem} at position (${Math.floor(
-           index / 10,
-         )}, ${index % 10})`
-         dispatch(placeItem({ index, item: selectedItem }))
-       } else if (tileType !== "Grass" && credit >= 1) {
-         actionType = "Remove"
-         creditChange = tileType === "House" ? 5 : tileType === "Rock" ? -3 : 0
-         description = `Removed ${tileType} at position (${Math.floor(
-           index / 10,
-         )}, ${index % 10})`
+      if (tileType === "Grass" && selectedItem) {
+        actionType = "Place"
+        creditChange = selectedItem === "House" ? -10 : -3
+        description = `Placed ${selectedItem} at position (${Math.floor(
+          index / 10,
+        )}, ${index % 10})`
+        dispatch(placeItem({ index, item: selectedItem }))
+      } else if (tileType !== "Grass" && credit >= 1) {
+        actionType = "Remove"
+        creditChange = tileType === "House" ? 5 : tileType === "Rock" ? -3 : 0
+        description = `Removed ${tileType} at position (${Math.floor(
+          index / 10,
+        )}, ${index % 10})`
 
-         dispatch(removeItem(index))
-       }
+        dispatch(removeItem(index))
+      }
 
-       if (description) {
-         dispatch(pushToHistory(description))
-       }
+      if (description) {
+        dispatch(pushToHistory(description))
+      }
 
-       if (actionType) {
-         dispatch(
-           setSelectedTile({
-             index: index,
-             type: tileType,
-             action: actionType,
-             creditChange: creditChange,
-           }),
-         )
-       }
-     },
-     [grid, dispatch, selectedItem, credit],
-   )
+      if (actionType) {
+        dispatch(
+          setSelectedTile({
+            index: index,
+            type: tileType,
+            action: actionType,
+            creditChange: creditChange,
+          }),
+        )
+      }
+    },
+    [grid, dispatch, selectedItem, credit],
+  )
 
-   return handleTileClick
-
+  return handleTileClick
 }

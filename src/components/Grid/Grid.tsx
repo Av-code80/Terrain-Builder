@@ -1,11 +1,11 @@
-import React, { useEffect} from "react"
+import React, { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import Tile from "../Tile/Tile"
 import { selectGrid } from "../../features/selector"
 import { initializeGrid } from "../../features/slices/grid/gridSlice"
 import { TerrainType } from "../../common/types/interfaces"
-import { useTileClickHandler } from "../../common/hooks/useTileclickHandler"
 import { stringToTileType } from "../../common/utils/tileUtils"
+import Tile from "../Tile/Tile"
+import { useTileClickHandler } from "../../common/hooks/useTileClickHandler"
 export type TileType = TerrainType
 
 const Grid: React.FC = () => {
@@ -32,8 +32,8 @@ const Grid: React.FC = () => {
               type={stringToTileType(tileType)}
               onClick={() => handleTileClick(index)}
               tabIndex={0} // for keyboard accessibility
-              role="gridcell" 
-              aria-label={`Tile type: ${tileType}`} 
+              role="gridcell"
+              aria-label={`Tile type: ${tileType}`}
             />
           )
         })}

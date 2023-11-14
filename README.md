@@ -1,15 +1,5 @@
 Bienvenue sur le test technique JS/TS de Koala !
 
-## Préambule
-
-Tout d’abord, tu as une semaine pour faire ce test (mais tu peux le rendre avant).
-
-Il te faudra :
-
-- Créer un repo privé sur Github
-- Envoyer une invitation sur ce repo à [@vthibault](https://github.com/vthibault), [@guillaumepn](https://github.com/guillaumepn) et [@thanhtran0302](https://github.com/thanhtran0302)
-- Une fois le test terminé : nous envoyer un mail à guillaume@neteck-fr.com et thanh@neteck-fr.com
-
 ## Présentation
 
 Le but est de créer une petite application de "terrain builder" fonctionnant uniquement côté client (pas besoin de base de données / d’API), une interface 2D où tu peux placer des éléments (rocher, eau, maison) sur une grille.
