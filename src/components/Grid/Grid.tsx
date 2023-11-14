@@ -8,6 +8,17 @@ import Tile from "../Tile/Tile"
 import { useTileClickHandler } from "../../common/hooks/useTileClickHandler"
 export type TileType = TerrainType
 
+/**
+ * Component representing a grid layout.
+ * This grid is used to display and interact with a collection of tiles.
+ * 
+ * @component
+ * @example
+ * return (
+ *   <Grid />
+ * )
+ */
+
 const Grid: React.FC = () => {
   const dispatch = useDispatch()
   const grid = useSelector(selectGrid) as TerrainType[]

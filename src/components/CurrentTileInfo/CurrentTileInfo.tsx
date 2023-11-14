@@ -3,6 +3,12 @@ import { useSelector } from "react-redux"
 import { TileColorClasses, TileType } from "../../common/types/enum"
 import { selectSelectedTile } from "../../features/selector"
 
+/**
+ * 
+ * @CurrentTileInfo component to let to display information of current tile.
+ * 
+ */
+
 const CurrentTileInfo: React.FC = () => {
   const selectedTile = useSelector(selectSelectedTile)
 

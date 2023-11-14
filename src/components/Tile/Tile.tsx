@@ -9,6 +9,11 @@ type TileProps = {
   "aria-label"?: string 
 }
 
+/**
+ * @Tile component to let to choose a tile.
+ * 
+ */
+
 const Tile: React.FC<TileProps> = ({
   type,
   onClick,

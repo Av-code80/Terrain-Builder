@@ -3,6 +3,12 @@ import { useDispatch, useSelector } from "react-redux"
 import { setSelectedItem } from "../../features/slices/grid/gridSlice"
 import { selectCredit, selectCreditChange } from "../../features/selector"
 
+/**
+ * 
+ * @Controls component to let to manage tile choosing.
+ * 
+ */
+
 const Controls: React.FC = () => {
   const dispatch = useDispatch()
   const credit = useSelector(selectCredit)

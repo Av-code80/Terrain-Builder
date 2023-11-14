@@ -31,9 +31,6 @@ Les coûts et restrictions sont les suivants :
 - Tous les petits “plus” visuels sont les bienvenus : toaster d’erreur si tu n’as pas le
   budget pour placer / supprimer tel bloc ; animation sur l’update du budget ; scroll
   sur les actions de l’historique ; etc. Laisse libre cours à ton imagination
-- Une version un peu minimaliste de ce à quoi ça pourrait ressembler :
-
-![Image](readme.png)
 
 ## Par où commencer
 
@@ -54,4 +51,3 @@ Uses [Vite](https://vitejs.dev/), [Vitest](https://vitest.dev/), and [React Test
 ```sh
 npx degit reduxjs/redux-templates/packages/vite-template-redux my-app
 ```
-

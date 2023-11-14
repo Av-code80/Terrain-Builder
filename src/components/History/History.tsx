@@ -5,6 +5,10 @@ import {
 } from "../../features/selector"
 import { pushToHistory } from "../../features/slices/grid/gridSlice"
 
+/**
+ * @History component to display and manage action history.
+ */
+
 const History: React.FC = () => {
   const actionHistory = useSelector(selectActionHistory)
   const currentHistoryIndex = useSelector(selectCurrentHistoryIndex)
