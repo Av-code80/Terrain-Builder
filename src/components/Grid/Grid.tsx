@@ -1,94 +1,42 @@
-import React, { useEffect } from "react"
+import React, { useEffect} from "react"
 import { useSelector, useDispatch } from "react-redux"
 import Tile from "../Tile/Tile"
-import {
-  selectCredit,
-  selectGrid,
-  selectSelectedItem,
-} from "../../features/selector"
-import { TileType } from "../../common/types/enum"
-import {
-  placeItem,
-  pushToHistory,
-  removeItem,
-  setSelectedTile,
-  initializeGrid,
-} from "../../features/slices/grid/gridSlice"
+import { selectGrid } from "../../features/selector"
+import { initializeGrid } from "../../features/slices/grid/gridSlice"
+import { TerrainType } from "../../common/types/interfaces"
+import { useTileClickHandler } from "../../common/hooks/useTileclickHandler"
+import { stringToTileType } from "../../common/utils/tileUtils"
+export type TileType = TerrainType
 
 const Grid: React.FC = () => {
   const dispatch = useDispatch()
-  const grid = useSelector(selectGrid)
-  const selectedItem = useSelector(selectSelectedItem)
-  const credit = useSelector(selectCredit)
+  const grid = useSelector(selectGrid) as TerrainType[]
+
+  const handleTileClick = useTileClickHandler(grid)
 
   useEffect(() => {
     dispatch(initializeGrid())
   }, [dispatch])
 
-  const handleTileClick = (index: number) => {
-    const tileType = grid[index]
-    let actionType = ""
-    let creditChange = 0
-    let description = ""
-
-    if (tileType === "Grass" && selectedItem) {
-      actionType = "Place"
-      creditChange = selectedItem === "House" ? -10 : -3
-      description = `Placed ${selectedItem} at position (${Math.floor(
-        index / 10,
-      )}, ${index % 10})`
-      dispatch(placeItem({ index, item: selectedItem }))
-    } else if (tileType !== "Grass" && credit >= 1) {
-      actionType = "Remove"
-      creditChange = tileType === "House" ? 5 : tileType === "Rock" ? -3 : 0
-      description = `Removed ${tileType} at position (${Math.floor(
-        index / 10,
-      )}, ${index % 10})`
-
-      dispatch(removeItem(index))
-    }
-
-    if (description) {
-      dispatch(pushToHistory(description))
-    }
-
-    if (actionType) {
-      dispatch(
-        setSelectedTile({
-          index: index,
-          type: tileType,
-          action: actionType,
-          creditChange: creditChange,
-        }),
-      )
-    }
-  }
-
-  const stringToTileType = (type: string): TileType => {
-    switch (type) {
-      case "Grass":
-        return TileType.Grass
-      case "Water":
-        return TileType.Water
-      case "Rock":
-        return TileType.Rock
-      case "House":
-        return TileType.House
-      default:
-        return TileType.Grass
-    }
-  }
-
   return (
     <div className="max-w-max mx-auto mt-8 animate-fadeIn">
-      <div className="grid grid-cols-10 gap-1 shadow-lg p-4 bg-green-100 rounded">
-        {grid.map((tileType, index) => (
-          <Tile
-            key={index}
-            type={stringToTileType(tileType)}
-            onClick={() => handleTileClick(index)}
-          />
-        ))}
+      <div
+        className="grid grid-cols-10 gap-1 shadow-lg p-4 bg-green-100 rounded"
+        role="grid"
+      >
+        {grid.map((tileType, index) => {
+          const key = `tile-${tileType}-${index}` // or using Date.now() when there is no unique id
+          return (
+            <Tile
+              key={key}
+              type={stringToTileType(tileType)}
+              onClick={() => handleTileClick(index)}
+              tabIndex={0} // for keyboard accessibility
+              role="gridcell" 
+              aria-label={`Tile type: ${tileType}`} 
+            />
+          )
+        })}
       </div>
     </div>
   )
