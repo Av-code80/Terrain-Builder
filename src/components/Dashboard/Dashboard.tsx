@@ -3,6 +3,11 @@ import { useDispatch } from "react-redux"
 import { redoAction, undoAction } from "../../features/slices/grid/gridSlice"
 import History from "../History/History"
 
+/**
+ * 
+ * @Dashboard component to let to redo and undo actions.
+ * 
+ */
 const Dashboard: React.FC = () => {
   const dispatch = useDispatch()
 

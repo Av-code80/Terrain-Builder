@@ -1,7 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { toast } from "react-toastify"
 import { TerrainState, TerrainType } from "../../../common/types/interfaces"
-import { TileType } from "../../../common/types/enum"
+import { TileType } from "../../../common/types"
+
+/**
+ * @Redux slice for managing the state of the grid.
+ * Includes functionalities such as initializing the grid, placing and removing items,undoing and redoing actions, and managing selected items and tiles.
+ *
+ * @slice gridSlice
+ * @state TerrainState
+ */
+
 
 const initialState: TerrainState = {
   grid: new Array(100).fill("Grass"),
