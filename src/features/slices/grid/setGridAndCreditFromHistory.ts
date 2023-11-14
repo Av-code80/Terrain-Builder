@@ -8,7 +8,7 @@ export interface HistoryEntry {
 }
 
 export const setGridAndCreditFromHistory = createAsyncThunk(
-  "terrain/setGridAndCreditFromHistory",
+  "grid/setGridAndCreditFromHistory",
   async (historyEntry: HistoryEntry) => {
     return historyEntry
   },
