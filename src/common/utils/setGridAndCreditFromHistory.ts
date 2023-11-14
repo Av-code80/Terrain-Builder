@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import { TerrainType } from "../../../common/types/interfaces"
+import { TerrainType } from "../types/interfaces"
 
 export interface HistoryEntry {
   grid: TerrainType[]
