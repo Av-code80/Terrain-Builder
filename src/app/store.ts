@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit"
-import terrainReducer from "./slices/terrain/terrainSlice"
+import terrainReducer from "../features/slices/grid/gridSlice"
 
 export const store = configureStore({
   reducer: {
-    terrain: terrainReducer,
+    grid: terrainReducer,
   },
 })
 

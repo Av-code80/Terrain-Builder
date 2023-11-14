@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { setSelectedItem } from "../../app/features/slices/terrain/terrainSlice"
-import { selectCredit, selectCreditChange } from "../../app/features/selector"
+import { setSelectedItem } from "../../features/slices/grid/gridSlice"
+import { selectCredit, selectCreditChange } from "../../features/selector"
 
 const Controls: React.FC = () => {
   const dispatch = useDispatch()

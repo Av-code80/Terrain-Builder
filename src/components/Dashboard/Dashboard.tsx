@@ -1,9 +1,6 @@
 import React from "react"
 import { useDispatch } from "react-redux"
-import {
-  redoAction,
-  undoAction,
-} from "../../app/features/slices/terrain/terrainSlice"
+import { redoAction, undoAction } from "../../features/slices/grid/gridSlice"
 import History from "../History/History"
 
 const Dashboard: React.FC = () => {
@@ -18,7 +15,7 @@ const Dashboard: React.FC = () => {
   }
   return (
     <div className="max-h-screen mt-10 overflow-auto">
-      <div className="flex justify-between mb-4">
+      <div className="flex justify-around mb-4">
         <button onClick={handleUndoClick} className="gradient-button-red">
           Undo
         </button>

@@ -5,15 +5,15 @@ import {
   selectCredit,
   selectGrid,
   selectSelectedItem,
-} from "../../app/features/selector"
-import { TileType } from "../../interfaces/enum"
+} from "../../features/selector"
+import { TileType } from "../../common/types/enum"
 import {
   placeItem,
   pushToHistory,
   removeItem,
   setSelectedTile,
   initializeGrid,
-} from "../../app/features/slices/terrain/terrainSlice"
+} from "../../features/slices/grid/gridSlice"
 
 const Grid: React.FC = () => {
   const dispatch = useDispatch()

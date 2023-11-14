@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { toast } from "react-toastify"
-import { TerrainState, TerrainType } from "../type"
-import { TileType } from "../../../../interfaces/enum"
+import { TerrainState, TerrainType } from "../../../common/types/interfaces"
+import { TileType } from "../../../common/types/enum"
 
 const initialState: TerrainState = {
   grid: new Array(100).fill("Grass"),
@@ -13,8 +13,8 @@ const initialState: TerrainState = {
   error: null,
 }
 
-export const terrainSlice = createSlice({
-  name: "terrain",
+export const gridSlice = createSlice({
+  name: "grid",
   initialState,
   reducers: {
     initializeGrid: (state) => {
@@ -125,6 +125,6 @@ export const {
   pushToHistory,
   redoAction,
   undoAction,
-} = terrainSlice.actions
+} = gridSlice.actions
 
-export default terrainSlice.reducer
+export default gridSlice.reducer

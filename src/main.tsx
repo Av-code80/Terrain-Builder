@@ -1,9 +1,9 @@
 import React from "react"
 import { createRoot } from "react-dom/client"
-import { store } from "./app/features/store"
 import { Provider } from "react-redux"
 import App from "./App"
 import "./tailwind.css"
+import store from "./app/store"
 
 const container = document.getElementById("root")
 
