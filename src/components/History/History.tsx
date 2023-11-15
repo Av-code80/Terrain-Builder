@@ -3,7 +3,8 @@ import {
   selectActionHistory,
   selectCurrentHistoryIndex,
 } from "../../features/selector"
-import { pushToHistory } from "../../features/slices/grid/gridSlice"
+import { gridSlice } from "../../features/slices/grid"
+
 
 /**
  * @History component to display and manage action history.
@@ -17,11 +18,7 @@ const History: React.FC = () => {
   const handleHistoryClick = (index: number) => {
     if (index !== currentHistoryIndex) {
       const historyEntry = actionHistory[index]
-      dispatch(pushToHistory(`Jumped to Action ${index + 1}`))
-      dispatch({
-        type: "grid/setGridAndCreditFromHistory",
-        payload: historyEntry,
-      })
+  dispatch(gridSlice.actions.setGridAndCreditFromHistory(historyEntry))
     }
   }
 
