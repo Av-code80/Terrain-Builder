@@ -26,7 +26,7 @@ export const useTileClickHandler = (grid: TerrainType[]) => {
 
       if (tileType === "Grass" && selectedItem) {
         actionType = "Place"
-        creditChange = selectedItem === "House" ? -10 : -3
+        creditChange = selectedItem === "House" ? +5 : -3
         description = `Placed ${selectedItem} at position (${Math.floor(
           index / 10,
         )}, ${index % 10})`
@@ -51,7 +51,7 @@ export const useTileClickHandler = (grid: TerrainType[]) => {
             index: index,
             type: tileType,
             action: actionType,
-            creditChange: creditChange,
+            creditChange
           }),
         )
       }

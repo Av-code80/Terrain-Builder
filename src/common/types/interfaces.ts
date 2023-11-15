@@ -29,11 +29,3 @@ export interface SelectedItemState {
   selectedTile: SelectedTile | null
 }
 
-export interface DashboardState {
-  grid: TerrainType[]
-  credit: number
-  selectedItem: TerrainType | null
-  actionHistory: HistoryEntry[]
-  currentHistoryIndex: number
-  selectedTile: SelectedTile | null
-}
