@@ -38,7 +38,7 @@ const Controls: React.FC = () => {
         className="gradient-btn water text-white py-2 px-6 rounded transition duration-200 flex items-center justify-center text-3xl 2xs:mb-2 xs:w-auto 2xs:w-2/3"
         onClick={() => handleSelectItem("Water")}
       >
-        🌊
+        💧
       </button>
       <button
         className="gradient-btn rock text-white py-2 px-6 rounded transition duration-200 flex items-center justify-center text-3xl 2xs:mb-2 xs:w-auto 2xs:w-2/3"

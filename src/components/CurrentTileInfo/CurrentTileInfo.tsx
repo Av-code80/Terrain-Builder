@@ -19,7 +19,7 @@ const CurrentTileInfo: React.FC = () => {
       <div className="gradient-text flex items-center justify-center text-xl animate-bounce">
         <div className="flex flex-col">
           <span className="text-lg">Please select a tile</span>
-          <span className=" text-center text-3xl">⇟</span>
+          <span className="text-center text-3xl">⇟</span>
         </div>
       </div>
     )
