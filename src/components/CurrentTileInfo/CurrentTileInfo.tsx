@@ -17,7 +17,7 @@ const CurrentTileInfo: React.FC = () => {
   if (!selectedTile) {
     return (
       <div className="gradient-text flex items-center justify-center text-xl animate-bounce">
-        Please select a tile <span className=" ml-1 text-2xl ">↘️</span>
+        Please select a tile <span className=" ml-1 text-2xl ">⤵️</span>
       </div>
     )
   }
@@ -54,7 +54,7 @@ const CurrentTileInfo: React.FC = () => {
         </span>
       </div>
       <span className="mr-1 text-purple-900">Action:</span>
-      {!isRemovable && (
+      {!isRemovable ? (
         <button
           onClick={handleRemoveClick}
           className="bg-gradient-to-r from-red-400 to-red-600 text-sm text-white py-1 px-3 rounded-full hover:from-red-500 hover:to-red-700 transition-colors duration-300"
@@ -62,9 +62,11 @@ const CurrentTileInfo: React.FC = () => {
           Remove (
           {selectedTile.creditChange >= 0
             ? `+${selectedTile.creditChange}`
-            : selectedTile.creditChange}{" "}
+            : selectedTile.creditChange}
           credit)
         </button>
+      ) : (
+        "🥁"
       )}
     </div>
   )
