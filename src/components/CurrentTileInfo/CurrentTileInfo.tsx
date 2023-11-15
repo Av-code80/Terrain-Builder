@@ -17,7 +17,7 @@ const CurrentTileInfo: React.FC = () => {
   if (!selectedTile) {
     return (
       <div className="gradient-text flex items-center justify-center text-xl animate-bounce">
-        Please select a tile <span>↘️</span>
+        Please select a tile <span className=" ml-1 text-2xl ">↘️</span>
       </div>
     )
   }
@@ -38,15 +38,12 @@ const CurrentTileInfo: React.FC = () => {
   const handleRemoveClick = () => {
     dispatch(removeItem(selectedTile.index))
     dispatch(
-      dispatch(
-        dispatch(
-          pushToHistory(
-            `Removed ${type} at ${position}, credit: ${creditChangeText}`,
-          ),
-        ),
+      pushToHistory(
+        `Removed ${type} at ${position}, credit: ${creditChangeText}`,
       ),
     )
   }
+
   return (
     <div className="bg-white gradient-shadow rounded gradient-shadow p-2 text-center gradient-border ">
       <div className="mb-3">

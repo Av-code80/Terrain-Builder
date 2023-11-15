@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { toast } from "react-toastify"
-import { TerrainState, TerrainType } from "../../../common/types/interfaces"
+import { HistoryEntry, TerrainState, TerrainType } from "../../../common/types/interfaces"
 import { TileType } from "../../../common/types"
 
 /**
@@ -121,6 +121,15 @@ export const gridSlice = createSlice({
       }
       state.actionHistory.push(historyEntry)
       state.currentHistoryIndex++
+    },
+    
+    setGridAndCreditFromHistory: (
+      state,
+      action: PayloadAction<HistoryEntry>,
+    ) => {
+      const { grid, credit } = action.payload
+      state.grid = grid
+      state.credit = credit
     },
   },
 })
