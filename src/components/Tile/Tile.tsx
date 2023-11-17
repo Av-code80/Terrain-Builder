@@ -1,6 +1,7 @@
 import React from "react"
-import { TileType, TileColorClasses } from "../../common/types/enum"
-import { TileIcon } from "../Controls/TileIcon/TileIcon"
+import { TileType } from "../../common/types/enum"
+import { TileIcon } from "../TileIcon/TileIcon"
+import { TileColorClasses } from "../../common/types/utilityTypes"
 
 type TileProps = {
   type: TileType

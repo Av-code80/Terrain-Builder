@@ -1,6 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { toast } from "react-toastify"
-import { HistoryEntry, TerrainState, TerrainType } from "../../../common/types/interfaces"
+import {
+  HistoryEntry,
+  GridState,
+  GridType,
+  SelectedTile,
+} from "../../../common/types/interfaces"
 import { TileType } from "../../../common/types"
 
 /**
@@ -8,11 +13,10 @@ import { TileType } from "../../../common/types"
  * Includes functionalities such as initializing the grid, placing and removing items,undoing and redoing actions, and managing selected items and tiles.
  *
  * @slice gridSlice
- * @state TerrainState
+ * @state GridState
  */
 
-
-const initialState: TerrainState = {
+const initialState: GridState = {
   grid: new Array(100).fill("Grass"),
   credit: 100,
   selectedItem: null,
@@ -34,20 +38,12 @@ export const gridSlice = createSlice({
 
     setSelectedItem: (
       state: { selectedItem: string | null },
-      action: PayloadAction<TerrainType | null>,
+      action: PayloadAction<GridType | null>,
     ) => {
       state.selectedItem = action.payload
     },
 
-    setSelectedTile: (
-      state,
-      action: PayloadAction<{
-        index: number
-        type: TerrainType
-        action: string
-        creditChange: number
-      }>,
-    ) => {
+    setSelectedTile: (state, action: PayloadAction<SelectedTile>) => {
       state.selectedTile = action.payload
     },
 
@@ -55,7 +51,7 @@ export const gridSlice = createSlice({
       state,
       action: PayloadAction<{
         index: number
-        item: TerrainType
+        item: GridType
       }>,
     ) => {
       const { index, item } = action.payload
@@ -82,7 +78,6 @@ export const gridSlice = createSlice({
         state.grid[index] = "Grass"
       } else if (item === "Rock" && state.credit >= 3) {
         state.credit -= 3
-
         state.grid[index] = "Grass"
       } else {
         toast.error("Not enough budget or action not allowed.")
@@ -122,7 +117,7 @@ export const gridSlice = createSlice({
       state.actionHistory.push(historyEntry)
       state.currentHistoryIndex++
     },
-    
+
     setGridAndCreditFromHistory: (
       state,
       action: PayloadAction<HistoryEntry>,

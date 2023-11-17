@@ -6,10 +6,10 @@ import {
   setSelectedTile,
 } from "../../features/slices/grid/gridSlice"
 import { selectCredit, selectSelectedItem } from "../../features/selector"
-import { TerrainType } from "../types/interfaces"
+import { GridType } from "../types/interfaces"
 import { useCallback } from "react"
 
-export const useTileClickHandler = (grid: TerrainType[]) => {
+export const useTileClickHandler = (grid: GridType[]) => {
   const dispatch = useDispatch()
   const selectedItem = useSelector(selectSelectedItem)
   const credit = useSelector(selectCredit)
@@ -17,7 +17,7 @@ export const useTileClickHandler = (grid: TerrainType[]) => {
   const handleTileClick = useCallback(
     (index: number) => {
       if (index < 0 || index >= grid.length) {
-       throw new Error(`Invalid tile index: ${index}`)
+        throw new Error(`Invalid tile index: ${index}`)
       }
       const tileType = grid[index]
       let actionType = ""
@@ -51,7 +51,7 @@ export const useTileClickHandler = (grid: TerrainType[]) => {
             index: index,
             type: tileType,
             action: actionType,
-            creditChange
+            creditChange: creditChange,
           }),
         )
       }

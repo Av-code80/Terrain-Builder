@@ -1,8 +1,9 @@
 import React from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { TileColorClasses, TileType } from "../../common/types/enum"
+import { TileType } from "../../common/types/enum"
 import { selectSelectedTile } from "../../features/selector"
 import { pushToHistory, removeItem } from "../../features/slices/grid"
+import { TileColorClasses } from "../../common/types/utilityTypes"
 
 /**
  *

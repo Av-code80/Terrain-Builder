@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { setSelectedItem } from "../../features/slices/grid/gridSlice"
 import { selectCredit, selectCreditChange } from "../../features/selector"
+import { ControlItemsType } from "../../common/types"
 
 /**
  * 
@@ -21,7 +22,7 @@ const Controls: React.FC = () => {
     }
   }, [updatedCredit])
 
-  const handleSelectItem = (itemType: "Water" | "Rock" | "House") => {
+  const handleSelectItem = (itemType: ControlItemsType) => {
     dispatch(setSelectedItem(itemType))
   }
 

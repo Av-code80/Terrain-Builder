@@ -1,5 +1,5 @@
 import React from "react"
-import { TileType } from "../../../common/types"
+import { TileType } from "../../common/types"
 
 type TileIconProps = {
   type: TileType
@@ -16,7 +16,7 @@ export const TileIcon: React.FC<TileIconProps> = ({ type }) => {
         return "🏠"
       case TileType.Grass:
       default:
-        return "🍀" 
+        return "🍀"
     }
   }
 

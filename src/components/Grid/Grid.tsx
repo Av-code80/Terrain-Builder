@@ -2,16 +2,15 @@ import React, { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { selectGrid } from "../../features/selector"
 import { initializeGrid } from "../../features/slices/grid/gridSlice"
-import { TerrainType } from "../../common/types/interfaces"
+import { GridType } from "../../common/types/interfaces"
 import { stringToTileType } from "../../common/utils/tileUtils"
 import Tile from "../Tile/Tile"
 import { useTileClickHandler } from "../../common/hooks"
-export type TileType = TerrainType
 
 /**
  * Component representing a grid layout.
  * This grid is used to display and interact with a collection of tiles.
- * 
+ *
  * @component
  * @example
  * return (
@@ -19,9 +18,10 @@ export type TileType = TerrainType
  * )
  */
 
+export type TileType = GridType
 const Grid: React.FC = () => {
   const dispatch = useDispatch()
-  const grid = useSelector(selectGrid) as TerrainType[]
+  const grid = useSelector(selectGrid)
 
   const handleTileClick = useTileClickHandler(grid)
 
@@ -42,7 +42,7 @@ const Grid: React.FC = () => {
               key={key}
               type={stringToTileType(tileType)}
               onClick={() => handleTileClick(index)}
-              tabIndex={0} 
+              tabIndex={0}
               role="gridcell"
               aria-label={`Tile type: ${tileType}`}
             />

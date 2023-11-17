@@ -5,7 +5,7 @@ import History from "../History/History"
 
 /**
  * 
- * @Dashboard component to let to redo and undo actions.
+ * @Dashboard component to let to manage redo, undo and History actions.
  * 
  */
 const Dashboard: React.FC = () => {
