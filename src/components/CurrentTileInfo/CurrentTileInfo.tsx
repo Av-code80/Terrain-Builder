@@ -10,7 +10,6 @@ import { TileColorClasses } from "../../common/types/utilityTypes"
  * @CurrentTileInfo component to let to display and manage current tile info.
  *
  */
-
 const CurrentTileInfo: React.FC = () => {
   const dispatch = useDispatch()
   const selectedTile = useSelector(selectSelectedTile)
@@ -26,24 +25,17 @@ const CurrentTileInfo: React.FC = () => {
     )
   }
 
-  const { index, type } = selectedTile
+  const { index, type, creditChange } = selectedTile
   const position = `(${Math.floor(index / 10)}, ${index % 10})`
   const tileColorClass = TileColorClasses[type as TileType]
   const isRemovable =
     selectedTile.type !== TileType.Grass && selectedTile.type !== TileType.Water
 
-  let creditChangeText = ""
-  if (type === "House") {
-    creditChangeText = "+5 credits"
-  } else if (type === "Rock") {
-    creditChangeText = "-3 credits"
-  }
-
   const handleRemoveClick = () => {
     dispatch(removeItem(selectedTile.index))
     dispatch(
       pushToHistory(
-        `Removed ${type} at ${position}, credit: ${creditChangeText}`,
+        `Removed ${type} at ${position}, credit: ${creditChange}`,
       ),
     )
   }
@@ -63,7 +55,7 @@ const CurrentTileInfo: React.FC = () => {
           onClick={handleRemoveClick}
           className="bg-gradient-to-r from-red-400 to-red-600 text-sm text-white py-1 px-3 rounded-full hover:from-red-500 hover:to-red-700 transition-colors duration-300"
         >
-          Remove  (
+          Remove (
           {selectedTile.creditChange >= 0
             ? `+${selectedTile.creditChange}`
             : selectedTile.creditChange} credit)

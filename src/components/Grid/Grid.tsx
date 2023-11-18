@@ -27,7 +27,7 @@ const Grid: React.FC = () => {
 
   useEffect(() => {
     dispatch(initializeGrid())
-  }, [dispatch])
+  }, [])
 
   return (
     <div className="max-w-max mx-auto mt-8 animate-fadeIn">

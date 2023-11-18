@@ -56,7 +56,7 @@ export const useTileClickHandler = (grid: GridType[]) => {
         )
       }
     },
-    [grid, dispatch, selectedItem, credit],
+    [grid, selectedItem, credit],
   )
 
   return handleTileClick
