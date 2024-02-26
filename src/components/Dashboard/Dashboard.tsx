@@ -19,7 +19,7 @@ const Dashboard: React.FC = () => {
     dispatch(redoAction())
   }
   return (
-    <div className="max-h-screen mt-10 overflow-auto">
+    <div className="max-h-screen mt-10">
       <div className="flex justify-around mb-4">
         <button onClick={handleUndoClick} className="gradient-button-red">
           Undo

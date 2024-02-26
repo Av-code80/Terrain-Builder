@@ -11,7 +11,7 @@ function Home() {
         <CurrentTileInfo />
         <Controls />
         <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
-          <div className="lg:flex-none lg:pr-4 max-h-screen overflow-auto">
+          <div className="lg:flex-none lg:pr-4 max-h-screen">
             <Dashboard />
           </div>
           <div className="flex-grow">

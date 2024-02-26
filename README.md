@@ -1,4 +1,3 @@
-Bienvenue sur le test technique JS/TS de Koala !
 
 ## Présentation
 

@@ -13,7 +13,7 @@ import { useTileClickHandler } from "../../common/hooks"
  *
  * @component
  * @example
- * return (
+ * @return (
  *   <Grid />
  * )
  */

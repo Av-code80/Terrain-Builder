@@ -5,9 +5,9 @@ import { selectCredit, selectCreditChange } from "../../features/selector"
 import { ControlItemsType } from "../../common/types"
 
 /**
- * 
+ *
  * @Controls component to let to manage tile choosing.
- * 
+ *
  */
 
 const Controls: React.FC = () => {
@@ -25,7 +25,6 @@ const Controls: React.FC = () => {
   const handleSelectItem = (itemType: ControlItemsType) => {
     dispatch(setSelectedItem(itemType))
   }
-
   return (
     <div className="flex md:justify-around xs:h-full xs:justify-between 2xs:flex-col xs:flex-row items-center p-4 rounded shadow-lg">
       <span

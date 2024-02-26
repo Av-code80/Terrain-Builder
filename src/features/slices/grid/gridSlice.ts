@@ -124,7 +124,7 @@ export const gridSlice = createSlice({
     ) => {
       const { grid, credit } = action.payload
       state.grid = grid
-      state.credit = credit
+      state.credit = credit 
     },
   },
 })
