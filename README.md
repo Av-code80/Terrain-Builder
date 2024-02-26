@@ -1,9 +1,9 @@
 
 ## Présentation
 
-Le but est de créer une petite application de "terrain builder" fonctionnant uniquement côté client (pas besoin de base de données / d’API), une interface 2D où tu peux placer des éléments (rocher, eau, maison) sur une grille.
+Le but est de créer une petite application de "terrain builder" fonctionnant uniquement côté client (pas besoin de base de données / d’API), une interface 2D où nous pouvons placer des éléments (rocher, eau, maison) sur une grille.
 
-Tu disposes d’un budget (disons 100 crédits), et certaines actions dépenseront ou ajouteront du crédit à ton budget.
+Nous disposons d’un budget (disons 100 crédits), et certaines actions dépenseront ou ajouteront du crédit à ton budget.
 
 Les coûts et restrictions sont les suivants :
 
@@ -31,22 +31,4 @@ Les coûts et restrictions sont les suivants :
   budget pour placer / supprimer tel bloc ; animation sur l’update du budget ; scroll
   sur les actions de l’historique ; etc. Laisse libre cours à ton imagination
 
-## Par où commencer
-
-Pour te familiariser avec les technos que nous utilisons chez Koala, l’app devra fonctionner avec React, Redux Toolkit et Typescript
-
-Pour te faciliter la tâche du setup, nous conseillons de partir d’une app React + Redux Toolkit (voir leur doc : https://redux-toolkit.js.org/introduction/getting-started)
-
-Pour t’aider sur le design, tu es libre d’installer une librairie de ton choix, comme styled-components ou Tailwind.
-
-A partir de là, à toi de gérer le fonctionnement de l’app avec les composants, actions / reducers, et structures de données qui te semblent cohérents.
-
-Bon courage !
-
-# vite-template-redux
-
-Uses [Vite](https://vitejs.dev/), [Vitest](https://vitest.dev/), and [React Testing Library](https://github.com/testing-library/react-testing-library) to create a modern [React](https://react.dev/) app compatible with [Create React App](https://create-react-app.dev/)
-
-```sh
-npx degit reduxjs/redux-templates/packages/vite-template-redux my-app
 ```
