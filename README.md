@@ -24,11 +24,9 @@ Les coûts et restrictions sont les suivants :
 - Si je clique sur une des cases, je vois des infos la concernant (type, position X;Y sur la grille) s’afficher dans un encart d’info. Dans cet encart, je vois aussi un bouton d’action : “Supprimer le bloc” (avec le crédit que cela vous coûtera /
   remboursera)
 - Je ne peux pas placer de bloc si je n’ai pas le budget nécessaire
-- (Bonus) Historique des actions : j’ai une section dans laquelle je vois l’historique de mes actions, et la
+- Historique des actions : j’ai une section dans laquelle je vois l’historique de mes actions, et la
   possibilité de cliquer sur celles-ci pour y revenir, ainsi que 2 boutons Suivant /
   Précédent
-- Tous les petits “plus” visuels sont les bienvenus : toaster d’erreur si tu n’as pas le
-  budget pour placer / supprimer tel bloc ; animation sur l’update du budget ; scroll
-  sur les actions de l’historique ; etc. Laisse libre cours à ton imagination
+- Design: toaster d’erreur si tu n’as pas le budget pour placer / supprimer tel   bloc ;  animation sur l’update du budget ; scroll sur les actions de l’historique ; etc. Laisse libre cours à ton imagination
 
 ```
